@@ -82,7 +82,7 @@ def get_build_order(packages, toadd=None, ordered=None):
 
         get_build_order(pkg.deps, toadd, ordered)
         ordered.append(pkg.directory)
-    return ordered[::-1]
+    return ordered
 
 
 if __name__ == "__main__":
