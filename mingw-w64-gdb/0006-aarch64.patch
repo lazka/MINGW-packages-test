@@ -1,0 +1,29 @@
+diff --git a/gdb/configure.host b/gdb/configure.host
+index fdd651987e3..3a2ca46d2fb 100644
+--- a/gdb/configure.host
++++ b/gdb/configure.host
+@@ -182,6 +182,9 @@ x86_64-*-openbsd*)	gdb_host=obsd64 ;;
+ x86_64-*-mingw*)        gdb_host=mingw64
+ 			gdb_host_obs=mingw-hdep.o
+ 			;;
++aarch64-*-mingw*)        gdb_host=mingw64
++			gdb_host_obs=mingw-hdep.o
++			;;
+ x86_64-*-cygwin*)	gdb_host=cygwin64 ;;
+ x86_64-*-gnu*)		gdb_host=gnu64 ;;
+ m32r*-*-linux*)          gdb_host=linux ;;
+--- gdb-16.3/gdb/nat/windows-nat.h.orig	2025-04-20 19:22:05.000000000 +0200
++++ gdb-16.3/gdb/nat/windows-nat.h	2025-09-16 18:45:30.155747200 +0200
+@@ -35,6 +35,12 @@
+ #define CONTEXT_EXTENDED_REGISTERS 0
+ #endif
+ 
++
++#ifndef CONTEXT_SEGMENTS
++/* Not defined for ARM/ARM64 */
++#define CONTEXT_SEGMENTS 0
++#endif
++
+ namespace windows_nat
+ {
+ 
