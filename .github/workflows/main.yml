@@ -159,6 +159,8 @@ jobs:
             repo: ucrt64
           - msystem: CLANG64
             repo: clang64
+          - msystem: MINGW32
+            repo: mingw32
 
     steps:
       - uses: actions/download-artifact@v4
